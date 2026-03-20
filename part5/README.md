@@ -25,7 +25,7 @@ Part 4 をベースに、LLM がツールを呼び出してファイルシステ
 ## 実行
 
 ```bash
-deno run --allow-net --allow-read part5/main.ts
+deno run --allow-net --allow-read main.ts
 ```
 
 ### 動作確認の例
