@@ -64,3 +64,7 @@ coding-agent/
     SYSTEM_PROMPT.md
     AGENTS.md
 ```
+
+## ライセンス
+
+[MIT License](./LICENSE)
