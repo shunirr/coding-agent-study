@@ -31,7 +31,7 @@ deno run --allow-net --allow-read main.ts
 ### 動作確認の例
 
 ```
-あなた: part5/main.ts の内容を説明して
+あなた: part05/main.ts の内容を説明して
 ```
 
 LLM が `read_file` ツールを使ってファイルを読み取り、内容を説明します。
