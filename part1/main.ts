@@ -61,8 +61,12 @@ async function main() {
   }
 
   console.log("\n回答を生成中...\n");
-  const reply = await callLLM(config, userMessage);
-  console.log(reply);
+  try {
+    const reply = await callLLM(config, userMessage);
+    console.log(reply);
+  } catch (error) {
+    console.error(`エラー: ${error instanceof Error ? error.message : error}`);
+  }
 }
 
 main();

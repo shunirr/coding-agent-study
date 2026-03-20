@@ -79,7 +79,7 @@ async function main() {
     { role: "system", content: systemMessage },
   ];
 
-  // Note: No conversation history limit is implemented for educational simplicity.
+  // Note: No conversation history limit is implemented for simplicity.
 
   console.log("チャットを開始します。終了するには Ctrl+C を押してください。\n");
 
@@ -95,10 +95,14 @@ async function main() {
 
     messages.push({ role: "user", content: userMessage });
 
-    const reply = await callLLM(config, messages);
-    messages.push({ role: "assistant", content: reply });
-
-    console.log(`\nアシスタント: ${reply}\n`);
+    try {
+      const reply = await callLLM(config, messages);
+      messages.push({ role: "assistant", content: reply });
+      console.log(`\nアシスタント: ${reply}\n`);
+    } catch (error) {
+      console.error(`\nエラー: ${error instanceof Error ? error.message : error}\n`);
+      messages.pop();
+    }
   }
 }
 

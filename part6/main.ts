@@ -68,6 +68,11 @@ async function agentLoop(config: Config, messages: Message[]): Promise<string> {
     // Add assistant message to history (includes tool_calls if any)
     messages.push(message);
 
+    // Display assistant's reasoning text if present
+    if (message.content) {
+      console.log(`\nアシスタント: ${message.content}`);
+    }
+
     if (finish_reason === "stop") {
       return message.content || "";
     }
@@ -134,8 +139,13 @@ async function main() {
 
     messages.push({ role: "user", content: userMessage });
 
-    const reply = await agentLoop(config, messages);
-    console.log(`\nアシスタント: ${reply}\n`);
+    try {
+      const reply = await agentLoop(config, messages);
+      console.log(`\nアシスタント: ${reply}\n`);
+    } catch (error) {
+      console.error(`\nエラー: ${error instanceof Error ? error.message : error}\n`);
+      messages.pop();
+    }
   }
 }
 
