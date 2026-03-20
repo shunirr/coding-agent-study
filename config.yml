@@ -1,0 +1,5 @@
+# config.yml
+base_url: "http://127.0.0.1:1234/v1/"  # LM Studio etc.
+# base_url: "https://api.openai.com/v1/"  # OpenAI
+api_key: ""  # Leave empty to skip Authorization header (for local LLMs)
+model: "gemma-3-12b-it"
